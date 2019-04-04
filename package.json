@@ -1,11 +1,11 @@
 {
-      "name": "teampink",
-      "version": "3.0.0",
-      "main": "main.js",
-      "description": "Application mise en place lors d'un cours YNOV sur un projet DELTA FESTIVAL.",
-      "keywords": [
-        "NativeScript"
-      ],
+  "name": "teampink",
+  "version": "3.0.0",
+  "main": "main.js",
+  "description": "Application mise en place lors d'un cours YNOV sur un projet DELTA FESTIVAL.",
+  "keywords": [
+    "NativeScript"
+  ],
   "nativescript": {
     "id": "org.nativescript.checkpointFront",
     "tns-android": {
