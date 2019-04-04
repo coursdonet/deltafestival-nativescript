@@ -1,10 +1,12 @@
 import { Component, Input } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "custom-action-bar",
     moduleId: module.id,
-    templateUrl: "./custom-action-bar.component.html"
+    templateUrl: "./custom-action-bar.component.html",
+    styleUrls: ['../../tinderLike/tinderLike.component.css']
 })
 export class CustomActionBarComponent {
     @Input() title: string = "";
@@ -13,7 +15,7 @@ export class CustomActionBarComponent {
     @Input() row: number = 0;
     @Input() colSpan: number = 0;
     @Input() rowSpan: number = 0;
-    constructor(private routerExtensions: RouterExtensions) {
+    constructor(private routerExtensions: RouterExtensions, private router: Router) {
     }
 
     goBack() {

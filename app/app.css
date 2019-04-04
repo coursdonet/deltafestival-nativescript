@@ -1,0 +1,19 @@
+@import "nativescript-theme-core/css/core.light.css";
+
+ActionBar {
+  background-color: black;
+  color: white;
+}
+
+.action-bar-label {
+  font-size: 22;
+  horizontal-align: center;
+  vertical-align: center;
+  color: white;
+}
+
+.action-bar-icon {
+  width: 20;
+  vertical-align: center;
+  margin: 12;
+}

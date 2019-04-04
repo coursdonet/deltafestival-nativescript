@@ -3,6 +3,7 @@ import { takePicture, requestPermissions } from 'nativescript-camera';
 import { ImageAsset } from 'tns-core-modules/image-asset';
 import { Router } from '@angular/router';
 import { TextField } from "tns-core-modules/ui/text-field";
+import { Page } from 'tns-core-modules/ui/page/page';
 
 @Component({
     selector: "TakePicture",
@@ -13,9 +14,11 @@ import { TextField } from "tns-core-modules/ui/text-field";
 
 export class TakePicturesComponent {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router,private page: Page) {
+        this.page.actionBarHidden = true;
+     }
 
-    public sauvegarder: boolean = true;
+    public sauvegarder: boolean = false;
     public cameraImage: ImageAsset;
     isTaked = false;
 
