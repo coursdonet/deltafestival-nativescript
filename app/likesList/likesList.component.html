@@ -1,12 +1,13 @@
-
+<ActionBar></ActionBar>
 <GridLayout class="page" rows="auto,auto,*" android:marginBottom="48">
-        <search [row]="1" (submit)="onSearch($event)" (clear)="onClear()"></search>
-        <ListView *ngIf="filteredItems && filteredItems.length; else noItems" row="2"
-            [items]="filteredItems" marginTop="24" (touch)="dismissKeyboard($event)">
-            <ng-template let-item="item" let-i="index">
-                <list-item [item]="item" (tapped)="onTap(item.id)" (disliked)="onDislike($event)"></list-item>
-            </ng-template>
-        </ListView>
+    <custom-action-bar [row]="0" title="Favoris"></custom-action-bar>
+    <search [row]="1" (submit)="onSearch($event)" (clear)="onClear()"></search>
+    <ListView *ngIf="filteredItems && filteredItems.length; else noItems" row="2"
+        [items]="filteredItems" marginTop="24" (touch)="dismissKeyboard($event)">
+        <ng-template let-item="item" let-i="index">
+            <list-item [item]="item" (tapped)="onTap(item.id)" (disliked)="onDislike($event)"></list-item>
+        </ng-template>
+    </ListView>
 </GridLayout>
 <GridLayout>
     <ng-template #noItems>

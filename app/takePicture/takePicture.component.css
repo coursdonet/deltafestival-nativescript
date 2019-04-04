@@ -1,0 +1,25 @@
+.button {
+    background: rgba(207, 207, 207,0.5);
+    color: #242E3B;
+    font-family: FontAwesome;
+    vertical-align: middle;
+    border-radius: 12;
+    font-size: 14;    
+}
+
+.button-active {
+    background: rgba(158, 214, 244, 1);
+    color: #242E3B;
+    font-family: FontAwesome;
+    vertical-align: middle;
+    border-radius: 12;
+    font-size: 14;    
+}
+
+Gridlayout{
+    margin-bottom: 60;
+}
+
+.label{
+    color: black;
+}

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     login() {
         this.userService.login(this.user)
             .subscribe(
-                () => this.router.navigate(["/tinderLike"]),
+                () => this.router.navigate(["/feed"]),
                 (error) => alert("Nous ne trouvons pas votre compte.")
             );
     }

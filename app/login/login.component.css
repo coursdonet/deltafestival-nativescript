@@ -1,0 +1,36 @@
+FlexboxLayout {
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-image: url("~/images/deltaBackground.jpg");
+}
+StackLayout {
+  width: 300;
+  padding: 10 16;
+  background-color: #f0f0f0;
+}
+Image {
+  margin-bottom: 20;
+  height: 100;
+}
+Button, TextField {
+  margin-bottom: 10;
+}
+.btn-primary {
+  background-color: #9ED6F4;
+  margin-left: 0;
+  margin-right: 0;
+}
+TextField {
+  placeholder-color: #C4AFB4;
+  color: black;
+}
+.dark {
+  background-color: rgba(0, 0, 0, 0.8)
+}
+.dark TextField {
+  color:  #C4AFB4;
+}
+.lite{
+  background-color: rgba(255, 255, 255, 0.8)
+}

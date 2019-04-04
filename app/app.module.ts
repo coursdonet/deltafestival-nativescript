@@ -33,6 +33,7 @@ import { PublicationService } from '../app/services/services/publication.service
 import { HttpClientModule } from "@angular/common/http";
 import { SearchBarModule } from "./components/search-bar/search-bar.module";
 import { ListItemModule } from "./components/list-item/list-item.module";
+import { CustomActionBarModule } from "./components/custom-action-bar/custom-action-bar.module";
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { ListItemModule } from "./components/list-item/list-item.module";
     HttpClientModule,
     ApiModule,
     SearchBarModule,
+    CustomActionBarModule,
     ListItemModule
   ],
   declarations: [
