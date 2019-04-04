@@ -13,10 +13,11 @@ import { User } from '../models/user';
 })
 class UsersService extends __BaseService {
   static readonly GetUsersPath = '/api/Users';
-  static readonly PostUserPath = '/api/Users';
   static readonly GetUserPath = '/api/Users/{id}';
   static readonly PutUserPath = '/api/Users/{id}';
   static readonly DeleteUserPath = '/api/Users/{id}';
+  static readonly LoginPath = '/api/Users/login/{TicketCode}';
+  static readonly PostUserPath = '/api/Users/register';
 
   constructor(
     config: __Configuration,
@@ -55,42 +56,6 @@ class UsersService extends __BaseService {
   GetUsers(): __Observable<Array<User>> {
     return this.GetUsersResponse().pipe(
       __map(_r => _r.body as Array<User>)
-    );
-  }
-
-  /**
-   * @param user undefined
-   * @return Success
-   */
-  PostUserResponse(user?: User): __Observable<__StrictHttpResponse<User>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    __body = user;
-    let req = new HttpRequest<any>(
-      'POST',
-      this.rootUrl + `/api/Users`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<User>;
-      })
-    );
-  }
-  /**
-   * @param user undefined
-   * @return Success
-   */
-  PostUser(user?: User): __Observable<User> {
-    return this.PostUserResponse(user).pipe(
-      __map(_r => _r.body as User)
     );
   }
 
@@ -205,6 +170,78 @@ class UsersService extends __BaseService {
    */
   DeleteUser(id: number): __Observable<User> {
     return this.DeleteUserResponse(id).pipe(
+      __map(_r => _r.body as User)
+    );
+  }
+
+  /**
+   * @param TicketCode undefined
+   * @return Success
+   */
+  LoginResponse(TicketCode: string): __Observable<__StrictHttpResponse<User>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/Users/login/${TicketCode}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<User>;
+      })
+    );
+  }
+  /**
+   * @param TicketCode undefined
+   * @return Success
+   */
+  Login(TicketCode: string): __Observable<User> {
+    return this.LoginResponse(TicketCode).pipe(
+      __map(_r => _r.body as User)
+    );
+  }
+
+  /**
+   * @param user undefined
+   * @return Success
+   */
+  PostUserResponse(user?: User): __Observable<__StrictHttpResponse<User>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = user;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/api/Users/register`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<User>;
+      })
+    );
+  }
+  /**
+   * @param user undefined
+   * @return Success
+   */
+  PostUser(user?: User): __Observable<User> {
+    return this.PostUserResponse(user).pipe(
       __map(_r => _r.body as User)
     );
   }
