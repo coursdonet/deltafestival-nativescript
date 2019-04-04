@@ -7,11 +7,10 @@ import { Checkpoint } from "../api/models/checkpoint";
 import { UserValidatedCheckpoints } from "../api/models/user-validated-checkpoints";
 import { Button } from "tns-core-modules/ui/button";
 
-
 import * as app from "tns-core-modules/application";
 import * as Geolocation from "nativescript-geolocation";
 import { User, Team, TeamMembers, TeamCheckpoints } from "../api/models";
-import { TeamMembersService, TeamCheckpointService } from "../api/services";
+import { TeamMembersService, TeamCheckpointService, TeamsService } from "../api/services";
 import { EventData } from "tns-core-modules/ui/page/page";
 import { Observable } from "rxjs";
 
@@ -37,14 +36,17 @@ export class HomeComponent implements OnInit {
     
     constructor(private zone: NgZone, private data: CheckpointService, private userData: UsersService,
                 private teamMembersService: TeamMembersService, private userService: UserValidatedCheckPointService,
-                private teamCpService: TeamCheckpointService) {
+                private teamCpService: TeamCheckpointService, private teamService: TeamsService) {
         this.latitude = 0;
         this.longitude = 0;
         this.calculatedArea = 0;
         this.userData.GetUser(4).subscribe((currUser) => {
             this.user = currUser;
             this.teamMembersService.GetUserTeam(this.user.id).subscribe((userTeam) => {
-                this.team = userTeam;
+                this.teamService.GetTeam_1(userTeam.teamId).subscribe((userByTeam) => {
+                    this.team = userByTeam;
+                    console.log(this.team);
+                });
             });
         });
     }

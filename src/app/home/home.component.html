@@ -15,12 +15,14 @@
     <Label class="action-bar-title" text="Checkpoints"></Label>
 </ActionBar>
 
-<GridLayout class="page page-content">
-    <StackLayout>
-        <Label text="Latitude : {{ latitude }}"></Label>
-        <Label text="Longitute : {{ longitude }}"></Label>
+<StackLayout class="page page-content" visibility="{{ checkpoints != null ? 'visible' : 'collapse' }}">
+    <StackLayout visibility="{{ team.winDate == null ? 'visible' : 'collapse' }}">
         <Button *ngFor="let checkpoint of checkpoints" class="btn btn-active" [ngClass]="{'btn-primary' : checkpoint.isActive, 'btn-discovered' : checkpoint.isDiscovered, 'btn-win' : checkpoint.isTeamChecked}"
-            text="{{ checkpoint.name }}" id="{{ checkpoint.id }}{{ checkpoint.name }}" isEnabled="{{ checkpoint.isDiscovered }}" (tap)="validateCheckpoint($event)" checkpointId="{{ checkpoint.id }}"></Button>
+            text="{{ checkpoint.name }}" isEnabled="{{ checkpoint.isDiscovered }}" (tap)="validateCheckpoint($event)" checkpointId="{{ checkpoint.id }}"></Button>
     </StackLayout>
-</GridLayout>
+    <StackLayout visibility="{{ team.winDate != null ? 'visible' : 'collapse' }}">
+        <Label class="page-icon fa" text="&#xf091;"></Label>
+        <Label class="page-placeholder" text="YOU WON MONGRELS"></Label>
+    </StackLayout>
+</StackLayout>
 

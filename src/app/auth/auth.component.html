@@ -14,3 +14,26 @@
     </ActionItem>
     <Label class="action-bar-title" text="Auth"></Label>
 </ActionBar>
+
+
+
+<FlexboxLayout class="page">     
+    <StackLayout class="form">
+            <Image src="~/app/images/deltalogo.png" class="img-rounded p-l-15 p-r-15 p-t-15"></Image>
+                <StackLayout class="input-field">                    
+                    <TextField hint="Nom d'utilisateur" class="input"></TextField>                    
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>  
+
+                <StackLayout class="input-field">
+                    <TextField hint="Code du billet" class="input"></TextField>
+                 <StackLayout class="hr-light"></StackLayout>
+                </StackLayout> 
+
+          <Button text="CONNEXION" (tap)="submit()" class="btn btn-primary btn-rounded-lg"></Button>
+
+       </StackLayout>
+</FlexboxLayout>
+
+
+
