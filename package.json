@@ -1,5 +1,5 @@
 {
-    "name": "TeamWhite",
+    "name": "teamwhite",
     "version": "3.0.0",
     "main": "main.js",
     "description": "Application mise en place lors d'un cours YNOV sur un projet DELTA FESTIVAL.",
@@ -7,7 +7,7 @@
         "NativeScript"
     ],
     "nativescript": {
-        "id": "TeamWhite",
+        "id":"org.nativescript.teamWhite",
         "tns-android": {
             "version": "5.2.0"
         },
