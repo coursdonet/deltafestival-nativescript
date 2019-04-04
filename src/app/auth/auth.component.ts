@@ -1,7 +1,6 @@
 import { Component, OnInit, NgZone } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import { Image } from "tns-core-modules/ui/image";
 
 @Component({
     selector: "Auth",
@@ -9,6 +8,7 @@ import { Image } from "tns-core-modules/ui/image";
     templateUrl: "./auth.component.html",
     styleUrls: ["./auth.component.scss"]
 })
+
 export class AuthComponent implements OnInit {
 
     isLoggingIn = true;
@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit {
 
     submit() {
         if (this.isLoggingIn) {
-            console.log("connectÃ©") ;
+            console.log("connecté") ;
         } else {
             // Perform the registration
         }
