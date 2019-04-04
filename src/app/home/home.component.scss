@@ -13,3 +13,28 @@
 .btn-win:active {
     background-color: green;
 }
+
+.page-content {
+    .page-placeholder {
+        color: #D7D7D7;
+        font-size: 20;
+        vertical-align: center;
+        horizontal-align: center;
+    }
+
+    .page-icon-pin {
+        font-size: 72;
+        vertical-align: top;
+        horizontal-align: center;
+        color: red;
+        margin-top: 20%;
+    }
+
+    .page-icon-trophy {
+        font-size: 72;
+        vertical-align: top;
+        horizontal-align: center;
+        color: goldenrod;
+        margin-top: 20%;
+    }
+}
