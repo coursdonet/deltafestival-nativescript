@@ -17,12 +17,13 @@
 
 
 
-<FlexboxLayout class="page">     
+
+<FlexboxLayout class="page">   
+        <Image src="~/app/images/deltalogo.png" class="img-rounded p-l-15 p-r-15 p-t-15 logo"></Image>   
     <StackLayout class="form">
-            <Image src="~/app/images/deltalogo.png" class="img-rounded p-l-15 p-r-15 p-t-15"></Image> 
 
                 <StackLayout class="input-field">
-                        <TextField hint="Code du billet" class="input"></TextField>
+                        <TextField hint="Code du billet" class="input" style="color: #C0C0C0";></TextField>
                         <StackLayout class="hr-light"></StackLayout>
                     </StackLayout>  
     
@@ -30,13 +31,13 @@
                             <TextField hint="Nom d'utilisateur" class="input"></TextField>
                          <StackLayout class="hr-light"></StackLayout>
                         </StackLayout> 
-                <Button [text]="isLoggingIn ? 'CONNEXION' : 'S\'INSCRIRE'" (tap)="submit()" class="btn btn-primary btn-rounded-lg"></Button>
+                <Button [text]="isLoggingIn ? 'CONNEXION' : 'S\'INSCRIRE'" (tap)="submit()" class="btn btn-primary btn-rounded-lg connect-button"></Button>
 
        </StackLayout>
 
        <Label (tap)="toggleForm();">
             <FormattedString>
-              <Span [text]="isLoggingIn ? 'Pas encore enregistré ? ' : 'Retour à connexion'"></Span>
+              <Span [text]="isLoggingIn ? 'Pas encore enregistrÃ© ? ' : 'Retour Ã  connexion'"></Span>
               <Span [text]="isLoggingIn ? 'Inscription' : ''" class="bold"></Span>
             </FormattedString>
           </Label> 
