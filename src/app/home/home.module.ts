@@ -3,6 +3,7 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
+import { ModalDialogService } from "nativescript-angular/modal-dialog";
 
 @NgModule({
     imports: [
@@ -14,6 +15,9 @@ import { HomeComponent } from "./home.component";
     ],
     schemas: [
         NO_ERRORS_SCHEMA
+    ],
+    providers: [
+        ModalDialogService
     ]
 
 })
