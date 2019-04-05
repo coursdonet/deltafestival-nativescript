@@ -1,43 +1,24 @@
-<ActionBar class="action-bar">
-    <!-- 
-    Use the NavigationButton as a side-drawer button in Android
-    because ActionItems are shown on the right side of the ActionBar
-    -->
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
-    <!-- 
-    Use the ActionItem for IOS with position set to left. Using the
-    NavigationButton as a side-drawer button in iOS is not possible,
-    because its function is to always navigate back in the application.
-    -->
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-        ios.position="left">
-    </ActionItem>
-    <Label class="action-bar-title" text="Auth"></Label>
-</ActionBar>
-
-
-
 
 <FlexboxLayout class="page">   
         <Image src="~/app/images/deltalogo.png" class="img-rounded p-l-15 p-r-15 p-t-15 logo"></Image>   
     <StackLayout class="form">
 
+                <StackLayout *ngIf="!isLoggingIn" class="input-field">
+                  <TextField hint="Nom d'utilisateur" class="input" style="color: #C0C0C0" [(ngModel)]="input.userName">
+                  </TextField>
+                  <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
                 <StackLayout class="input-field">
-                        <TextField hint="Code du billet" class="input" style="color: #C0C0C0";></TextField>
+                        <TextField hint="Code du billet" class="input" style="color: #C0C0C0" [(ngModel)]="input.ticketCode" returnKeyType="done" (returnPress)="login()"></TextField>
                         <StackLayout class="hr-light"></StackLayout>
                     </StackLayout>  
-    
-                    <StackLayout *ngIf="!isLoggingIn" class="input-field">
-                            <TextField hint="Nom d'utilisateur" class="input"></TextField>
-                         <StackLayout class="hr-light"></StackLayout>
-                        </StackLayout> 
-                <Button [text]="isLoggingIn ? 'CONNEXION' : 'S\'INSCRIRE'" (tap)="submit()" class="btn btn-primary btn-rounded-lg connect-button"></Button>
+                <Button [text]="isLoggingIn ? 'CONNEXION' : 'S\'INSCRIRE'" (tap)="login()" class="btn btn-primary btn-rounded-lg connect-button"></Button>
 
        </StackLayout>
 
        <Label (tap)="toggleForm();">
             <FormattedString>
-              <Span [text]="isLoggingIn ? 'Pas encore enregistré ? ' : 'Retour à connexion'"></Span>
+              <Span [text]="isLoggingIn ? 'Pas encore enregistre ? ' : 'Retour � connexion'"></Span>
               <Span [text]="isLoggingIn ? 'Inscription' : ''" class="bold"></Span>
             </FormattedString>
           </Label> 

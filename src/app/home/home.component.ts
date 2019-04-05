@@ -9,6 +9,7 @@ import { Button } from "tns-core-modules/ui/button";
 
 import * as app from "tns-core-modules/application";
 import * as Geolocation from "nativescript-geolocation";
+import * as ApplicationSettings from "application-settings";
 import { User, Team, TeamMembers, TeamCheckpoints } from "../api/models";
 import { TeamMembersService, TeamCheckpointService, TeamsService } from "../api/services";
 import { EventData } from "tns-core-modules/ui/page/page";
@@ -31,7 +32,6 @@ export class HomeComponent implements OnInit {
     date: Date;
     user: User;
     team: Team;
-    isReady: boolean;
 
     private watchId: number;
     
@@ -41,15 +41,16 @@ export class HomeComponent implements OnInit {
         this.latitude = 0;
         this.longitude = 0;
         this.calculatedArea = 0;
-        this.userData.GetUser(4).subscribe((currUser) => {
+        this.userData.GetUser(ApplicationSettings.getNumber("userId")).subscribe((currUser) => {
             this.user = currUser;
             this.teamMembersService.GetUserTeam(this.user.id).subscribe((userTeam) => {
-                this.teamService.GetTeamById(userTeam.teamId).subscribe((userByTeam) => {
-                    this.team = userByTeam;
-                });
+                if (userTeam) {
+                    this.teamService.GetTeamById(userTeam.teamId).subscribe((userByTeam) => {
+                        this.team = userByTeam;
+                    });
+                }
             });
         });
-        this.isReady = false;
     }
 
     ngOnInit(): void {
@@ -84,9 +85,11 @@ export class HomeComponent implements OnInit {
         this.watchId = Geolocation.watchLocation((location) => {
             if (location) {
                 this.zone.run(() => {
-                    this.latitude = location.latitude;
-                    this.longitude = location.longitude;
-                    this.calculeGeo();
+                    if (this.team) {
+                        this.latitude = location.latitude;
+                        this.longitude = location.longitude;
+                        this.calculeGeo();
+                    }
                 });
             }
         }, (error) => {
@@ -135,7 +138,6 @@ export class HomeComponent implements OnInit {
                     currCheckpoint.isDiscovered = (this.longitude >= fromLong && this.longitude <= toLong
                         && this.latitude >= fromLat && this.latitude <= toLat);
                 }
-                this.isReady = true;
             });
         })
     }

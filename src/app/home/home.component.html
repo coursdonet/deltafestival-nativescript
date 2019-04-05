@@ -15,7 +15,7 @@
     <Label class="action-bar-title" text="Checkpoints"></Label>
 </ActionBar>
 
-<StackLayout class="page page-content" visibility="{{ isReady ? 'visible' : 'collapse' }}">
+<StackLayout class="page page-content" visibility="{{ checkpoints != null ? 'visible' : 'collapse' }}">
     <StackLayout>
         <Label class="page-icon-pin fa" text="&#xf276;"></Label>
         <Label class="page-placeholder" text="CHECKPOINTS"></Label>
@@ -27,6 +27,10 @@
     <StackLayout visibility="{{ team && team.winDate ? 'visible' : 'collapse' }}">
         <Label class="page-icon-trophy fa" text="&#xf091;"></Label>
         <Label class="page-placeholder" text="YOU WON"></Label>
+    </StackLayout>
+    <StackLayout visibility="{{ !team ? 'visible' : 'collapse' }}">
+        <Label class="page-icon-team fa" text="&#xf0c0;"></Label>
+        <Label class="page-placeholder" text="Revenez quand vous aurez une team !"></Label>
     </StackLayout>
 </StackLayout>
 
