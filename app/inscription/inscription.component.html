@@ -1,0 +1,46 @@
+<ActionBar title="Inscription" class="action-bar">
+</ActionBar>
+
+<FlexboxLayout class="page">
+    <StackLayout class="form">
+        <Image class="logo" src="~/images/logo.png"></Image>
+        <PreviousNextView>
+            <GridLayout rows="auto, auto, auto, auto">
+
+                <StackLayout row="0" class="input-field">
+                    <TextField class="input" hint="Votre humeur" [isEnabled]="!processing"
+                         autocorrect="false"
+                        autocapitalizationType="none" [(ngModel)]="user.email"
+                        returnKeyType="next" (returnPress)="focusPassword()"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <StackLayout row="1" class="input-field">
+                    <TextField class="input" hint="Pseudonyme" [isEnabled]="!processing"
+                        autocorrect="false" autocapitalizationType="none"
+                        [(ngModel)]="user.email" returnKeyType="next"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <StackLayout row="2" class="input-field">
+                    <TextField class="input" hint="Identifiant" [isEnabled]="!processing"
+                        autocorrect="false" autocapitalizationType="none"
+                        [(ngModel)]="user.email" returnKeyType="next"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <StackLayout row="3" class="input-field">
+                    <TextField #password class="input" [isEnabled]="!processing"
+                        hint="Mot de passe" secure="true" [(ngModel)]="user.password"
+                        [returnKeyType]="isLoggingIn ? 'done' : 'next'"
+                        (returnPress)="focusConfirmPassword()"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+            </GridLayout>
+        </PreviousNextView>
+
+        <Button text="Inscription" (tap)="Inscription()" class="btn btn-primary m-t-20"></Button>
+    </StackLayout>
+
+</FlexboxLayout>

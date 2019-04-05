@@ -1,0 +1,27 @@
+<FlexboxLayout class="page">
+    <StackLayout class="form">
+        <Image class="logo" src="~/images/logo.png"></Image>
+        <PreviousNextView>
+            <GridLayout rows="auto, auto, auto">
+                <StackLayout row="0" class="input-field">
+                    <TextField class="input" hint="Email"
+                        keyboardType="email" autocorrect="false"
+                        autocapitalizationType="none"
+                        returnKeyType="next"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <StackLayout row="1" class="input-field">
+                    <TextField #password class="input"
+                        hint="Mot de passe" secure="true" ></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+            </GridLayout>
+        </PreviousNextView>
+
+        <Button text="Connexion" (tap)="Connexion()" class="btn btn-primary m-t-20"></Button>
+    </StackLayout>
+    <Button class="color"  text="Pas encore inscrit ?" (tap)="Inscription()"></Button>
+
+</FlexboxLayout>

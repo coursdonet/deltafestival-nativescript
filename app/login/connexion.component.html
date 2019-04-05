@@ -1,0 +1,15 @@
+<ActionBar title="Connexion" class="action-bar">
+</ActionBar>
+
+<GridLayout>
+    <StackLayout class="form">
+        
+        <Label text="Pseudonyme" class="label font-weight-bold m-b-5"></Label>
+        <TextField required hint="Pseudonyme" class="input input-border"
+            [(ngModel)]="textField" #element></TextField>
+        <Label text="Mot de passe" class="label font-weight-bold m-b-5"></Label>
+        <TextField class="input input-border" required hint="Mot de passe"
+            [(ngModel)]="TextField" secure="true" #element></TextField>
+        <Button text="Connexion" (tap)="onButtonTap()" class="btn btn-primary btn-rounded-lg"></Button>
+    </StackLayout>
+</GridLayout>

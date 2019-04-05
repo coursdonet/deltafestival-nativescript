@@ -1,0 +1,63 @@
+.home-panel{
+    vertical-align: center; 
+    font-size: 20;
+    margin:5;
+}
+
+.page {
+  align-items: center;
+  flex-direction: column;
+}
+.form {
+  margin-left: 30;
+  margin-right: 30;
+  flex-grow: 2;
+  vertical-align: middle;
+}
+
+.logo {
+  
+  height: 150;
+  font-weight: bold;
+}
+.header {
+  horizontal-align: center;
+  font-size: 25;
+  font-weight: 600;
+  margin-bottom: 70;
+  text-align: center;
+  color: #D51A1A;
+}
+
+
+.input {
+  font-size: 18;
+  placeholder-color: #fff;
+  color: #fff;
+}
+.input:disabled {
+  background-color: white;
+  opacity: 0.5;
+}
+
+
+
+.btn-primary {
+  margin: 30 5 15 5;
+  background-color: #f58ba2
+}
+
+.login-label {
+  horizontal-align: center;
+  color: #fff;
+  font-size: 16;
+}
+
+.bold {
+  color: #000000; 
+}
+
+.color {
+    color: #fff;
+    margin-bottom: 10;
+}
