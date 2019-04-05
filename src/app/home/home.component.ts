@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
     date: Date;
     user: User;
     team: Team;
+    isReady: boolean;
 
     private watchId: number;
     
@@ -43,12 +44,12 @@ export class HomeComponent implements OnInit {
         this.userData.GetUser(4).subscribe((currUser) => {
             this.user = currUser;
             this.teamMembersService.GetUserTeam(this.user.id).subscribe((userTeam) => {
-                this.teamService.GetTeam_1(userTeam.teamId).subscribe((userByTeam) => {
+                this.teamService.GetTeamById(userTeam.teamId).subscribe((userByTeam) => {
                     this.team = userByTeam;
-                    console.log(this.team);
                 });
             });
         });
+        this.isReady = false;
     }
 
     ngOnInit(): void {
@@ -134,6 +135,7 @@ export class HomeComponent implements OnInit {
                     currCheckpoint.isDiscovered = (this.longitude >= fromLong && this.longitude <= toLong
                         && this.latitude >= fromLat && this.latitude <= toLat);
                 }
+                this.isReady = true;
             });
         })
     }
