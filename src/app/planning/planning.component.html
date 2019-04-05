@@ -14,3 +14,13 @@
     </ActionItem>
     <Label class="action-bar-title" text="Planning"></Label>
 </ActionBar>
+
+<GridLayout class="page page-content">
+    <StackLayout>
+        <Label text="Votre Programme"></Label>
+
+        <Label *ngFor="let uc of userConcertsId" text="{{ uc.concert.artist }} " id="{{ uc.id }}"></Label>
+        <Button *ngFor="let concert of concerts" text="{{ concert.artist }} " class="btn btn-active" concertId="{{ concert.id }}" (tap)="addConcert($event)"
+        ></Button>
+     </StackLayout>
+</GridLayout>
