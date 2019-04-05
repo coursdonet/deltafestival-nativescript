@@ -15,7 +15,7 @@
     <Label class="action-bar-title" text="Checkpoints"></Label>
 </ActionBar>
 
-<StackLayout class="page page-content" visibility="{{ checkpoints != null ? 'visible' : 'collapse' }}">
+<StackLayout class="page page-content" visibility="{{ isReady ? 'visible' : 'collapse' }}">
     <StackLayout>
         <Label class="page-icon-pin fa" text="&#xf276;"></Label>
         <Label class="page-placeholder" text="CHECKPOINTS"></Label>
