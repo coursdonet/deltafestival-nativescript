@@ -10,7 +10,7 @@ Run: tns run android
 
 If you have an error about a tns plugin like cardview or swipe menu:
 
-tns plateform remove android
+tns platform remove android
 
 tns plugin remove nativescript-cardview
 
