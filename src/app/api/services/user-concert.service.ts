@@ -14,7 +14,7 @@ import { UserConcert } from '../models/user-concert';
 class UserConcertService extends __BaseService {
   static readonly GetUserConcertsItemsPath = '/api/UserConcert';
   static readonly PostUserConcertItemPath = '/api/UserConcert';
-  static readonly GetUserConcertsItems_1Path = '/api/UserConcert/{userId}';
+  static readonly GetUserConcertsByIdPath = '/api/UserConcert/{userId}';
   static readonly DeleteUserConcertItemPath = '/api/UserConcert/{concertId}';
 
   constructor(
@@ -97,7 +97,7 @@ class UserConcertService extends __BaseService {
    * @param userId undefined
    * @return Success
    */
-  GetUserConcertsItems_1Response(userId: number): __Observable<__StrictHttpResponse<Array<UserConcert>>> {
+  GetUserConcertsByIdResponse(userId: number): __Observable<__StrictHttpResponse<Array<UserConcert>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -123,8 +123,8 @@ class UserConcertService extends __BaseService {
    * @param userId undefined
    * @return Success
    */
-  GetUserConcertsItems_1(userId: number): __Observable<Array<UserConcert>> {
-    return this.GetUserConcertsItems_1Response(userId).pipe(
+  GetUserConcertsById(userId: number): __Observable<Array<UserConcert>> {
+    return this.GetUserConcertsByIdResponse(userId).pipe(
       __map(_r => _r.body as Array<UserConcert>)
     );
   }

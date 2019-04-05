@@ -14,7 +14,7 @@ import { Team } from '../models/team';
 class TeamsService extends __BaseService {
   static readonly GetTeamPath = '/api/Teams';
   static readonly PostTeamPath = '/api/Teams';
-  static readonly GetTeam_1Path = '/api/Teams/{id}';
+  static readonly GetTeamByIdPath = '/api/Teams/{id}';
   static readonly PutTeamPath = '/api/Teams/{id}';
   static readonly DeleteTeamPath = '/api/Teams/{id}';
 
@@ -98,7 +98,7 @@ class TeamsService extends __BaseService {
    * @param id undefined
    * @return Success
    */
-  GetTeam_1Response(id: number): __Observable<__StrictHttpResponse<Team>> {
+  GetTeamByIdResponse(id: number): __Observable<__StrictHttpResponse<Team>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -124,8 +124,8 @@ class TeamsService extends __BaseService {
    * @param id undefined
    * @return Success
    */
-  GetTeam_1(id: number): __Observable<Team> {
-    return this.GetTeam_1Response(id).pipe(
+  GetTeamById(id: number): __Observable<Team> {
+    return this.GetTeamByIdResponse(id).pipe(
       __map(_r => _r.body as Team)
     );
   }
