@@ -20,11 +20,11 @@
         <Label class="page-icon-pin fa" text="&#xf276;"></Label>
         <Label class="page-placeholder" text="CHECKPOINTS"></Label>
     </StackLayout>
-    <StackLayout visibility="{{ team.winDate == null ? 'visible' : 'collapse' }}">
+    <StackLayout visibility="{{ team && !team.winDate ? 'visible' : 'collapse' }}">
         <Button *ngFor="let checkpoint of checkpoints" class="btn btn-active btn-rounded-lg" [ngClass]="{'btn-primary' : checkpoint.isActive, 'btn-discovered' : checkpoint.isDiscovered, 'btn-win' : checkpoint.isTeamChecked}"
             text="{{ checkpoint.name }}" isEnabled="{{ checkpoint.isDiscovered }}" (tap)="validateCheckpoint($event)" checkpointId="{{ checkpoint.id }}"></Button>
     </StackLayout>
-    <StackLayout visibility="{{ team.winDate != null ? 'visible' : 'collapse' }}">
+    <StackLayout visibility="{{ team && team.winDate ? 'visible' : 'collapse' }}">
         <Label class="page-icon-trophy fa" text="&#xf091;"></Label>
         <Label class="page-placeholder" text="YOU WON"></Label>
     </StackLayout>
