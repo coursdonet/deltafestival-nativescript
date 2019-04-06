@@ -35,16 +35,10 @@ export class PlanningComponent implements OnInit {
         this.concertService.GetConcertsItems().subscribe((currentConcert) => {
             this.concerts = currentConcert;
         })
-        this.userConcertService.GetUserConcertsItems_1(1).subscribe((currentConcert) => {
+        this.userConcertService.GetUserConcertsById(1).subscribe((currentConcert) => {
             this.userConcertsId = currentConcert;
             console.log(this.userConcertsId);
         })
-        // for (let i = 0; i < this.userConcertsId.length; i++) {
-        //     this.userConcertsId[i].concert.id
-        //     this.concertService.GetConcertItem(this.userConcertsId[i]["concertId"]).subscribe((currentConcert) => {
-        //         this.userConcerts[i] = currentConcert;
-        //     })
-        // }
         }
 
     onDrawerButtonTap(): void {

@@ -5,7 +5,9 @@ import { UsersService } from "../api/services";
 import { User } from "../api/models";
 import * as ApplicationSettings from "application-settings";
 import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "ui/page";
+import { alert } from "tns-core-modules/ui/dialogs";
+import { Label } from "tns-core-modules/ui/label";
+import { getViewById } from "tns-core-modules/ui/page/page";
 
 @Component({
     selector: "Auth",
@@ -22,12 +24,11 @@ export class AuthComponent implements OnInit {
     user: User;
     input: any;
     
-    constructor(private userService: UsersService, private router: RouterExtensions, page: Page) {
+    constructor(private userService: UsersService, private router: RouterExtensions) {
         this.input = {
             userName: "",
             ticketCode: ""
         };
-        page.actionBarHidden = true;
     }
 
     toggleForm() {
@@ -40,26 +41,33 @@ export class AuthComponent implements OnInit {
             this.userService.Login(this.ticketCode).subscribe((loggedUser) => {
                 this.user = loggedUser;
                 ApplicationSettings.setNumber("userId", loggedUser.id);
+                const sideDrawer = <RadSideDrawer>app.getRootView();
+                const labelTicket = <Label>getViewById(sideDrawer, "userName");
+                const labelCode = <Label>getViewById(sideDrawer, "ticketCode");
+                sideDrawer.gesturesEnabled = true;
+                labelTicket.text = loggedUser.userName;
+                labelCode.text = "NÂ° de ticket : " + loggedUser.ticketCode;
                 this.router.navigate(["/home"], { clearHistory: true });
-            });
-            console.log("connecté");
+            }, (error) => alert({
+                title: "Erreur",
+                message: error.error,
+                okButtonText: "OK"
+            }));
         } else {
             // Perform the registration
             this.userService.PostUser(this.input).subscribe((loggedUser) => {
                 this.user = loggedUser;
                 ApplicationSettings.setNumber("userId", loggedUser.id);
                 this.router.navigate(["/home"], { clearHistory: true });
-            });
+            }, (error) => alert({
+                title: "Erreur",
+                message: error.error,
+                okButtonText: "OK"
+            }));
         }
 
       }
 
     ngOnInit(): void {
-        // Init your component properties here.
-    }
-
-    onDrawerButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        sideDrawer.showDrawer();
     }
 }

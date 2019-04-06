@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
 
     private _activatedUrl: string;
     private _sideDrawerTransition: DrawerTransitionBase;
-    isLogged: boolean;
 
     constructor(private router: Router, private routerExtensions: RouterExtensions) {
         // Use the component constructor to inject services.
