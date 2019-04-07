@@ -7,16 +7,16 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { Concert } from '../models/concert';
+import { Team } from '../models/team';
 @Injectable({
   providedIn: 'root',
 })
-class ConcertService extends __BaseService {
-  static readonly GetConcertsItemsPath = '/api/Concert/user={userId}';
-  static readonly GetConcertItemPath = '/api/Concert/{id}';
-  static readonly PutConcertItemPath = '/api/Concert/{id}';
-  static readonly DeleteConcertItemPath = '/api/Concert/{id}';
-  static readonly PostConcertItemPath = '/api/Concert';
+class TeamService extends __BaseService {
+  static readonly ListPath = '/api/Team';
+  static readonly EditPath = '/api/Team';
+  static readonly CreatePath = '/api/Team';
+  static readonly GetbyIdPath = '/api/Team/{id}';
+  static readonly DeletePath = '/api/Team/{id}';
 
   constructor(
     config: __Configuration,
@@ -24,19 +24,13 @@ class ConcertService extends __BaseService {
   ) {
     super(config, http);
   }
-
-  /**
-   * @param userId undefined
-   * @return Success
-   */
-  GetConcertsItemsResponse(userId: number): __Observable<__StrictHttpResponse<Array<Concert>>> {
+  ListResponse(): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/Concert/user=${userId}`,
+      this.rootUrl + `/api/Team`,
       __body,
       {
         headers: __headers,
@@ -47,72 +41,26 @@ class ConcertService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<Concert>>;
+        return _r as __StrictHttpResponse<null>;
       })
     );
-  }
-  /**
-   * @param userId undefined
-   * @return Success
-   */
-  GetConcertsItems(userId: number): __Observable<Array<Concert>> {
-    return this.GetConcertsItemsResponse(userId).pipe(
-      __map(_r => _r.body as Array<Concert>)
+  }  List(): __Observable<null> {
+    return this.ListResponse().pipe(
+      __map(_r => _r.body as null)
     );
   }
 
   /**
-   * @param id undefined
-   * @return Success
+   * @param team undefined
    */
-  GetConcertItemResponse(id: number): __Observable<__StrictHttpResponse<Concert>> {
+  EditResponse(team?: Team): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-
-    let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/api/Concert/${id}`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<Concert>;
-      })
-    );
-  }
-  /**
-   * @param id undefined
-   * @return Success
-   */
-  GetConcertItem(id: number): __Observable<Concert> {
-    return this.GetConcertItemResponse(id).pipe(
-      __map(_r => _r.body as Concert)
-    );
-  }
-
-  /**
-   * @param params The `ConcertService.PutConcertItemParams` containing the following parameters:
-   *
-   * - `id`:
-   *
-   * - `item`:
-   */
-  PutConcertItemResponse(params: ConcertService.PutConcertItemParams): __Observable<__StrictHttpResponse<null>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-
-    __body = params.item;
+    __body = team;
     let req = new HttpRequest<any>(
       'PUT',
-      this.rootUrl + `/api/Concert/${params.id}`,
+      this.rootUrl + `/api/Team`,
       __body,
       {
         headers: __headers,
@@ -128,14 +76,44 @@ class ConcertService extends __BaseService {
     );
   }
   /**
-   * @param params The `ConcertService.PutConcertItemParams` containing the following parameters:
-   *
-   * - `id`:
-   *
-   * - `item`:
+   * @param team undefined
    */
-  PutConcertItem(params: ConcertService.PutConcertItemParams): __Observable<null> {
-    return this.PutConcertItemResponse(params).pipe(
+  Edit(team?: Team): __Observable<null> {
+    return this.EditResponse(team).pipe(
+      __map(_r => _r.body as null)
+    );
+  }
+
+  /**
+   * @param team undefined
+   */
+  CreateResponse(team?: Team): __Observable<__StrictHttpResponse<null>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = team;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/api/Team`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<null>;
+      })
+    );
+  }
+  /**
+   * @param team undefined
+   */
+  Create(team?: Team): __Observable<null> {
+    return this.CreateResponse(team).pipe(
       __map(_r => _r.body as null)
     );
   }
@@ -143,14 +121,48 @@ class ConcertService extends __BaseService {
   /**
    * @param id undefined
    */
-  DeleteConcertItemResponse(id: number): __Observable<__StrictHttpResponse<null>> {
+  GetbyIdResponse(id: number): __Observable<__StrictHttpResponse<null>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/Team/${id}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<null>;
+      })
+    );
+  }
+  /**
+   * @param id undefined
+   */
+  GetbyId(id: number): __Observable<null> {
+    return this.GetbyIdResponse(id).pipe(
+      __map(_r => _r.body as null)
+    );
+  }
+
+  /**
+   * @param id undefined
+   */
+  DeleteResponse(id: number): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/Concert/${id}`,
+      this.rootUrl + `/api/Team/${id}`,
       __body,
       {
         headers: __headers,
@@ -168,58 +180,14 @@ class ConcertService extends __BaseService {
   /**
    * @param id undefined
    */
-  DeleteConcertItem(id: number): __Observable<null> {
-    return this.DeleteConcertItemResponse(id).pipe(
+  Delete(id: number): __Observable<null> {
+    return this.DeleteResponse(id).pipe(
       __map(_r => _r.body as null)
     );
   }
-
-  /**
-   * @param item undefined
-   * @return Success
-   */
-  PostConcertItemResponse(item?: Concert): __Observable<__StrictHttpResponse<Concert>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    __body = item;
-    let req = new HttpRequest<any>(
-      'POST',
-      this.rootUrl + `/api/Concert`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<Concert>;
-      })
-    );
-  }
-  /**
-   * @param item undefined
-   * @return Success
-   */
-  PostConcertItem(item?: Concert): __Observable<Concert> {
-    return this.PostConcertItemResponse(item).pipe(
-      __map(_r => _r.body as Concert)
-    );
-  }
 }
 
-module ConcertService {
-
-  /**
-   * Parameters for PutConcertItem
-   */
-  export interface PutConcertItemParams {
-    id: number;
-    item?: Concert;
-  }
+module TeamService {
 }
 
-export { ConcertService }
+export { TeamService }

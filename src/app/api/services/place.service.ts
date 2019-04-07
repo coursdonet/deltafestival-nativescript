@@ -7,16 +7,16 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { Concert } from '../models/concert';
+import { Place } from '../models/place';
 @Injectable({
   providedIn: 'root',
 })
-class ConcertService extends __BaseService {
-  static readonly GetConcertsItemsPath = '/api/Concert/user={userId}';
-  static readonly GetConcertItemPath = '/api/Concert/{id}';
-  static readonly PutConcertItemPath = '/api/Concert/{id}';
-  static readonly DeleteConcertItemPath = '/api/Concert/{id}';
-  static readonly PostConcertItemPath = '/api/Concert';
+class PlaceService extends __BaseService {
+  static readonly GetPlaceItemsPath = '/api/Place';
+  static readonly PostLocalizationPath = '/api/Place';
+  static readonly GetPlaceItemPath = '/api/Place/{id}';
+  static readonly PutPlacePath = '/api/Place/{id}';
+  static readonly DeleteLocalizationPath = '/api/Place/{id}';
 
   constructor(
     config: __Configuration,
@@ -26,17 +26,15 @@ class ConcertService extends __BaseService {
   }
 
   /**
-   * @param userId undefined
    * @return Success
    */
-  GetConcertsItemsResponse(userId: number): __Observable<__StrictHttpResponse<Array<Concert>>> {
+  GetPlaceItemsResponse(): __Observable<__StrictHttpResponse<Array<Place>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/Concert/user=${userId}`,
+      this.rootUrl + `/api/Place`,
       __body,
       {
         headers: __headers,
@@ -47,32 +45,31 @@ class ConcertService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<Concert>>;
+        return _r as __StrictHttpResponse<Array<Place>>;
       })
     );
   }
   /**
-   * @param userId undefined
    * @return Success
    */
-  GetConcertsItems(userId: number): __Observable<Array<Concert>> {
-    return this.GetConcertsItemsResponse(userId).pipe(
-      __map(_r => _r.body as Array<Concert>)
+  GetPlaceItems(): __Observable<Array<Place>> {
+    return this.GetPlaceItemsResponse().pipe(
+      __map(_r => _r.body as Array<Place>)
     );
   }
 
   /**
-   * @param id undefined
+   * @param Places undefined
    * @return Success
    */
-  GetConcertItemResponse(id: number): __Observable<__StrictHttpResponse<Concert>> {
+  PostLocalizationResponse(Places?: Place): __Observable<__StrictHttpResponse<Place>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-
+    __body = Places;
     let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/api/Concert/${id}`,
+      'POST',
+      this.rootUrl + `/api/Place`,
       __body,
       {
         headers: __headers,
@@ -83,7 +80,43 @@ class ConcertService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Concert>;
+        return _r as __StrictHttpResponse<Place>;
+      })
+    );
+  }
+  /**
+   * @param Places undefined
+   * @return Success
+   */
+  PostLocalization(Places?: Place): __Observable<Place> {
+    return this.PostLocalizationResponse(Places).pipe(
+      __map(_r => _r.body as Place)
+    );
+  }
+
+  /**
+   * @param id undefined
+   * @return Success
+   */
+  GetPlaceItemResponse(id: number): __Observable<__StrictHttpResponse<Place>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/Place/${id}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Place>;
       })
     );
   }
@@ -91,28 +124,28 @@ class ConcertService extends __BaseService {
    * @param id undefined
    * @return Success
    */
-  GetConcertItem(id: number): __Observable<Concert> {
-    return this.GetConcertItemResponse(id).pipe(
-      __map(_r => _r.body as Concert)
+  GetPlaceItem(id: number): __Observable<Place> {
+    return this.GetPlaceItemResponse(id).pipe(
+      __map(_r => _r.body as Place)
     );
   }
 
   /**
-   * @param params The `ConcertService.PutConcertItemParams` containing the following parameters:
+   * @param params The `PlaceService.PutPlaceParams` containing the following parameters:
    *
    * - `id`:
    *
-   * - `item`:
+   * - `place`:
    */
-  PutConcertItemResponse(params: ConcertService.PutConcertItemParams): __Observable<__StrictHttpResponse<null>> {
+  PutPlaceResponse(params: PlaceService.PutPlaceParams): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
-    __body = params.item;
+    __body = params.place;
     let req = new HttpRequest<any>(
       'PUT',
-      this.rootUrl + `/api/Concert/${params.id}`,
+      this.rootUrl + `/api/Place/${params.id}`,
       __body,
       {
         headers: __headers,
@@ -128,29 +161,30 @@ class ConcertService extends __BaseService {
     );
   }
   /**
-   * @param params The `ConcertService.PutConcertItemParams` containing the following parameters:
+   * @param params The `PlaceService.PutPlaceParams` containing the following parameters:
    *
    * - `id`:
    *
-   * - `item`:
+   * - `place`:
    */
-  PutConcertItem(params: ConcertService.PutConcertItemParams): __Observable<null> {
-    return this.PutConcertItemResponse(params).pipe(
+  PutPlace(params: PlaceService.PutPlaceParams): __Observable<null> {
+    return this.PutPlaceResponse(params).pipe(
       __map(_r => _r.body as null)
     );
   }
 
   /**
    * @param id undefined
+   * @return Success
    */
-  DeleteConcertItemResponse(id: number): __Observable<__StrictHttpResponse<null>> {
+  DeleteLocalizationResponse(id: number): __Observable<__StrictHttpResponse<Place>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/Concert/${id}`,
+      this.rootUrl + `/api/Place/${id}`,
       __body,
       {
         headers: __headers,
@@ -161,65 +195,30 @@ class ConcertService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<null>;
+        return _r as __StrictHttpResponse<Place>;
       })
     );
   }
   /**
    * @param id undefined
-   */
-  DeleteConcertItem(id: number): __Observable<null> {
-    return this.DeleteConcertItemResponse(id).pipe(
-      __map(_r => _r.body as null)
-    );
-  }
-
-  /**
-   * @param item undefined
    * @return Success
    */
-  PostConcertItemResponse(item?: Concert): __Observable<__StrictHttpResponse<Concert>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-    __body = item;
-    let req = new HttpRequest<any>(
-      'POST',
-      this.rootUrl + `/api/Concert`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<Concert>;
-      })
-    );
-  }
-  /**
-   * @param item undefined
-   * @return Success
-   */
-  PostConcertItem(item?: Concert): __Observable<Concert> {
-    return this.PostConcertItemResponse(item).pipe(
-      __map(_r => _r.body as Concert)
+  DeleteLocalization(id: number): __Observable<Place> {
+    return this.DeleteLocalizationResponse(id).pipe(
+      __map(_r => _r.body as Place)
     );
   }
 }
 
-module ConcertService {
+module PlaceService {
 
   /**
-   * Parameters for PutConcertItem
+   * Parameters for PutPlace
    */
-  export interface PutConcertItemParams {
+  export interface PutPlaceParams {
     id: number;
-    item?: Concert;
+    place?: Place;
   }
 }
 
-export { ConcertService }
+export { PlaceService }

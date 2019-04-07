@@ -3,21 +3,29 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration';
 
+import { AuthService } from './services/auth.service';
 import { CheckpointService } from './services/checkpoint.service';
 import { ConcertService } from './services/concert.service';
 import { ConcertLocationService } from './services/concert-location.service';
+import { CrushService } from './services/crush.service';
+import { IgnoredService } from './services/ignored.service';
 import { LocalizationsService } from './services/localizations.service';
-import { LoginService } from './services/login.service';
+import { MoodService } from './services/mood.service';
 import { MoodsService } from './services/moods.service';
+import { PlaceService } from './services/place.service';
+import { PublicationService } from './services/publication.service';
+import { RankingService } from './services/ranking.service';
+import { TeamService } from './services/team.service';
 import { TeamCheckpointService } from './services/team-checkpoint.service';
 import { TeamMembersService } from './services/team-members.service';
 import { TeamsService } from './services/teams.service';
-import { TestService } from './services/test.service';
+import { TinderService } from './services/tinder.service';
+import { UserService } from './services/user.service';
 import { UserConcertService } from './services/user-concert.service';
-import { UserRolesService } from './services/user-roles.service';
 import { UsersService } from './services/users.service';
 import { UserValidatedCheckPointService } from './services/user-validated-check-point.service';
 import { ValuesService } from './services/values.service';
+import { ZoneService } from './services/zone.service';
 
 /**
  * Provider for all Api services, plus ApiConfiguration
@@ -32,21 +40,29 @@ import { ValuesService } from './services/values.service';
   declarations: [],
   providers: [
     ApiConfiguration,
+    AuthService,
     CheckpointService,
     ConcertService,
     ConcertLocationService,
+    CrushService,
+    IgnoredService,
     LocalizationsService,
-    LoginService,
+    MoodService,
     MoodsService,
+    PlaceService,
+    PublicationService,
+    RankingService,
+    TeamService,
     TeamCheckpointService,
     TeamMembersService,
     TeamsService,
-    TestService,
+    TinderService,
+    UserService,
     UserConcertService,
-    UserRolesService,
     UsersService,
     UserValidatedCheckPointService,
-    ValuesService
+    ValuesService,
+    ZoneService
   ],
 })
 export class ApiModule {

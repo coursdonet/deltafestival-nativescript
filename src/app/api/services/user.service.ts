@@ -7,16 +7,16 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { UserRole } from '../models/user-role';
+import { User } from '../models/user';
 @Injectable({
   providedIn: 'root',
 })
-class UserRolesService extends __BaseService {
-  static readonly GetUserRolePath = '/api/UserRoles';
-  static readonly PostUserRolePath = '/api/UserRoles';
-  static readonly GetUserRole_1Path = '/api/UserRoles/{id}';
-  static readonly PutUserRolePath = '/api/UserRoles/{id}';
-  static readonly DeleteUserRolePath = '/api/UserRoles/{id}';
+class UserService extends __BaseService {
+  static readonly ListPath = '/api/User';
+  static readonly EditPath = '/api/User';
+  static readonly CreatePath = '/api/User';
+  static readonly GetbyIdPath = '/api/User/{id}';
+  static readonly DeletePath = '/api/User/{id}';
 
   constructor(
     config: __Configuration,
@@ -24,17 +24,13 @@ class UserRolesService extends __BaseService {
   ) {
     super(config, http);
   }
-
-  /**
-   * @return Success
-   */
-  GetUserRoleResponse(): __Observable<__StrictHttpResponse<Array<UserRole>>> {
+  ListResponse(): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/UserRoles`,
+      this.rootUrl + `/api/User`,
       __body,
       {
         headers: __headers,
@@ -45,107 +41,26 @@ class UserRolesService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<UserRole>>;
+        return _r as __StrictHttpResponse<null>;
       })
     );
-  }
-  /**
-   * @return Success
-   */
-  GetUserRole(): __Observable<Array<UserRole>> {
-    return this.GetUserRoleResponse().pipe(
-      __map(_r => _r.body as Array<UserRole>)
+  }  List(): __Observable<null> {
+    return this.ListResponse().pipe(
+      __map(_r => _r.body as null)
     );
   }
 
   /**
-   * @param userRole undefined
-   * @return Success
+   * @param user undefined
    */
-  PostUserRoleResponse(userRole?: UserRole): __Observable<__StrictHttpResponse<UserRole>> {
+  EditResponse(user?: User): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = userRole;
-    let req = new HttpRequest<any>(
-      'POST',
-      this.rootUrl + `/api/UserRoles`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<UserRole>;
-      })
-    );
-  }
-  /**
-   * @param userRole undefined
-   * @return Success
-   */
-  PostUserRole(userRole?: UserRole): __Observable<UserRole> {
-    return this.PostUserRoleResponse(userRole).pipe(
-      __map(_r => _r.body as UserRole)
-    );
-  }
-
-  /**
-   * @param id undefined
-   * @return Success
-   */
-  GetUserRole_1Response(id: number): __Observable<__StrictHttpResponse<UserRole>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-
-    let req = new HttpRequest<any>(
-      'GET',
-      this.rootUrl + `/api/UserRoles/${id}`,
-      __body,
-      {
-        headers: __headers,
-        params: __params,
-        responseType: 'json'
-      });
-
-    return this.http.request<any>(req).pipe(
-      __filter(_r => _r instanceof HttpResponse),
-      __map((_r) => {
-        return _r as __StrictHttpResponse<UserRole>;
-      })
-    );
-  }
-  /**
-   * @param id undefined
-   * @return Success
-   */
-  GetUserRole_1(id: number): __Observable<UserRole> {
-    return this.GetUserRole_1Response(id).pipe(
-      __map(_r => _r.body as UserRole)
-    );
-  }
-
-  /**
-   * @param params The `UserRolesService.PutUserRoleParams` containing the following parameters:
-   *
-   * - `id`:
-   *
-   * - `userRole`:
-   */
-  PutUserRoleResponse(params: UserRolesService.PutUserRoleParams): __Observable<__StrictHttpResponse<null>> {
-    let __params = this.newParams();
-    let __headers = new HttpHeaders();
-    let __body: any = null;
-
-    __body = params.userRole;
+    __body = user;
     let req = new HttpRequest<any>(
       'PUT',
-      this.rootUrl + `/api/UserRoles/${params.id}`,
+      this.rootUrl + `/api/User`,
       __body,
       {
         headers: __headers,
@@ -161,30 +76,25 @@ class UserRolesService extends __BaseService {
     );
   }
   /**
-   * @param params The `UserRolesService.PutUserRoleParams` containing the following parameters:
-   *
-   * - `id`:
-   *
-   * - `userRole`:
+   * @param user undefined
    */
-  PutUserRole(params: UserRolesService.PutUserRoleParams): __Observable<null> {
-    return this.PutUserRoleResponse(params).pipe(
+  Edit(user?: User): __Observable<null> {
+    return this.EditResponse(user).pipe(
       __map(_r => _r.body as null)
     );
   }
 
   /**
-   * @param id undefined
-   * @return Success
+   * @param user undefined
    */
-  DeleteUserRoleResponse(id: number): __Observable<__StrictHttpResponse<UserRole>> {
+  CreateResponse(user?: User): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-
+    __body = user;
     let req = new HttpRequest<any>(
-      'DELETE',
-      this.rootUrl + `/api/UserRoles/${id}`,
+      'POST',
+      this.rootUrl + `/api/User`,
       __body,
       {
         headers: __headers,
@@ -195,30 +105,89 @@ class UserRolesService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<UserRole>;
+        return _r as __StrictHttpResponse<null>;
+      })
+    );
+  }
+  /**
+   * @param user undefined
+   */
+  Create(user?: User): __Observable<null> {
+    return this.CreateResponse(user).pipe(
+      __map(_r => _r.body as null)
+    );
+  }
+
+  /**
+   * @param id undefined
+   */
+  GetbyIdResponse(id: number): __Observable<__StrictHttpResponse<null>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/User/${id}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<null>;
       })
     );
   }
   /**
    * @param id undefined
-   * @return Success
    */
-  DeleteUserRole(id: number): __Observable<UserRole> {
-    return this.DeleteUserRoleResponse(id).pipe(
-      __map(_r => _r.body as UserRole)
+  GetbyId(id: number): __Observable<null> {
+    return this.GetbyIdResponse(id).pipe(
+      __map(_r => _r.body as null)
+    );
+  }
+
+  /**
+   * @param id undefined
+   */
+  DeleteResponse(id: number): __Observable<__StrictHttpResponse<null>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'DELETE',
+      this.rootUrl + `/api/User/${id}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<null>;
+      })
+    );
+  }
+  /**
+   * @param id undefined
+   */
+  Delete(id: number): __Observable<null> {
+    return this.DeleteResponse(id).pipe(
+      __map(_r => _r.body as null)
     );
   }
 }
 
-module UserRolesService {
-
-  /**
-   * Parameters for PutUserRole
-   */
-  export interface PutUserRoleParams {
-    id: number;
-    userRole?: UserRole;
-  }
+module UserService {
 }
 
-export { UserRolesService }
+export { UserService }
