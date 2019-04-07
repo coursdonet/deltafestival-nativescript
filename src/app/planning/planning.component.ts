@@ -26,6 +26,7 @@ export class PlanningComponent implements OnInit {
     user: User;
     userConcertsId: Array<UserConcert>;
     Programm = true;
+    isEmpty = false;
     // concertData: ConcertService; 
 
     constructor(private userData: UsersService, private concertService: ConcertService, private userConcertService: UserConcertService) {
@@ -51,6 +52,7 @@ export class PlanningComponent implements OnInit {
         })
         this.userConcertService.GetUserConcertsById(this.user.id).subscribe((currentConcert) => {
             this.userConcertsId = currentConcert;
+            this.isEmpty = this.userConcertsId.length == 0;
         })
     }
 
