@@ -36,6 +36,7 @@
     "mustache": "^3.0.1",
     "nativescript-angular": "^7.2.3",
     "nativescript-camera": "^4.4.0",
+    "nativescript-cardview": "^3.1.1",
     "nativescript-geolocation": "^5.0.0",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-sidedrawer": "~5.1.0",

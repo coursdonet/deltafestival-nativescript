@@ -7,6 +7,11 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import {LOCALE_ID} from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeFR from '@angular/common/locales/fr';
+
+registerLocaleData(localeFR);
 
 @NgModule({
     bootstrap: [
@@ -21,6 +26,9 @@ import { AppComponent } from "./app.component";
     ],
     declarations: [
         AppComponent
+    ],
+    providers: [
+        { provide: LOCALE_ID, useValue:'fr' }
     ],
     schemas: [
         NO_ERRORS_SCHEMA

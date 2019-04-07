@@ -6,6 +6,11 @@ import { Concert, UserConcert, ConcertLocation, User } from "../api/models";
 import { ConcertService, UserConcertService, ConcertLocationService, UsersService } from "../api/services";
 import { EventData } from "tns-core-modules/ui/page/page";
 import { Button } from "tns-core-modules/ui/button/button";
+import { CardView } from "../../../node_modules/nativescript-cardview";
+import { registerElement } from "nativescript-angular/element-registry";
+import * as ApplicationSettings from "application-settings";
+
+registerElement("CardView", () => CardView);
 
 @Component({
     selector: "Planning",
@@ -20,30 +25,33 @@ export class PlanningComponent implements OnInit {
     concertLocation : ConcertLocation;
     user: User;
     userConcertsId: Array<UserConcert>;
+    Programm = true;
     // concertData: ConcertService; 
 
     constructor(private userData: UsersService, private concertService: ConcertService, private userConcertService: UserConcertService) {
 
-            this.userData.GetUser(1).subscribe((currUser) => {
-                this.user = currUser;
-            });
-        
     }
 
     ngOnInit(): void {
   
-        this.concertService.GetConcertsItems().subscribe((currentConcert) => {
-            this.concerts = currentConcert;
-        })
-        this.userConcertService.GetUserConcertsById(1).subscribe((currentConcert) => {
-            this.userConcertsId = currentConcert;
-            console.log(this.userConcertsId);
-        })
+        this.userData.GetUser(ApplicationSettings.getNumber("userId")).subscribe((currUser) => {
+            this.user = currUser;
+            this.refreshTabs();
+        });
         }
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
+    }
+
+    private refreshTabs() {
+        this.concertService.GetConcertsItems(this.user.id).subscribe((currentConcert) => {
+            this.concerts = currentConcert;
+        })
+        this.userConcertService.GetUserConcertsById(this.user.id).subscribe((currentConcert) => {
+            this.userConcertsId = currentConcert;
+        })
     }
 
     private addConcert(args : EventData): void{
@@ -61,6 +69,22 @@ export class PlanningComponent implements OnInit {
             concertId : concert,
         }
         this.userConcertService.PostUserConcertItem(concertToAdd).subscribe();
+    }
+
+    remove(id: number): void {
+        this.userConcertService.DeleteUserConcertItem(id).subscribe((result) => {
+            this.refreshTabs();
+        })
+    }
+
+    add(concertId: number) {
+        this.userConcertService.PostUserConcertItem({ concertId : concertId, userId : this.user.id}).subscribe((result) => {
+            this.refreshTabs();
+        }, (error) => alert({
+            title: "Hop hop hop !",
+            message: error.error,
+            okButtonText: "Non :("
+        }))
     }
 
     private isSelected(args : EventData): boolean{

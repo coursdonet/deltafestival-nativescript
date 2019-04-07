@@ -13,7 +13,7 @@ $blue-50: rgba($blue-dark, 0.5) !default;
 $blue-20: rgba($blue-dark, 0.2) !default;
 $blue-10: rgba($blue-dark, 0.1) !default;
 
-$accent-dark: #5E9BCE !default;
+$accent-dark: #4d4d4d !default;
 $accent-light: #4781FE !default;
 
 $success-dark: #06CE6A !default;
@@ -41,7 +41,7 @@ $page-content-placeholder-font-size: 20;
 **/
 
 // Colors
-$background: #fff;
+$background: #4d4d4d;
 $primary: lighten(#000, 13%);
 $secondary: lighten(#000, 46%);
 $disabled: lighten(#000, 62%);
@@ -57,8 +57,8 @@ $item-color-ios: $blue-dark;
 $item-color-android: $blue-dark;
 
 $side-drawer-header-background: #fafafa;
-$side-drawer-header-brand: #737373;
-$side-drawer-background: #FFFFFF;
+$side-drawer-header-brand: white;
+$side-drawer-background: #6e6e6e;
 
 // ActionBar
 $ab-background: $accent;

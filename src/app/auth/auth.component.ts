@@ -69,5 +69,16 @@ export class AuthComponent implements OnInit {
       }
 
     ngOnInit(): void {
+        if (ApplicationSettings.getNumber("userId")) {
+            this.userService.GetUser(ApplicationSettings.getNumber("userId")).subscribe((loggedUser) => {
+                const sideDrawer = <RadSideDrawer>app.getRootView();
+                const labelTicket = <Label>getViewById(sideDrawer, "userName");
+                const labelCode = <Label>getViewById(sideDrawer, "ticketCode");
+                sideDrawer.gesturesEnabled = true;
+                labelTicket.text = loggedUser.userName;
+                labelCode.text = "N° de ticket : " + loggedUser.ticketCode;
+                this.router.navigate(["/home"], { clearHistory: true });
+            })
+        }
     }
 }

@@ -15,12 +15,17 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
             <StackLayout class="sidedrawer-content">
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
                     <Label col="0" text="&#xf276;" class="fa"></Label>
-                    <Label col="1" text="Home" class="p-r-10"></Label>
+                    <Label col="1" text="Checkpoints" class="p-r-10"></Label>
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/planning')" (tap)="onNavItemTap('/planning')">
                     <Label col="0" text="&#xf017;" class="fa"></Label>
-                    <Label col="1" text="Planning" class="p-r-10"></Label>
+                    <Label col="1" text="Concerts" class="p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" class="sidedrawer-list-item" (tap)="logout()">
+                    <Label col="0" text="&#xf017;" class="fa"></Label>
+                    <Label col="1" text="Déconnexion" class="p-r-10"></Label>
                 </GridLayout>
     
                 <StackLayout class="hr-light"></StackLayout>

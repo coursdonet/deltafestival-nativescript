@@ -136,15 +136,14 @@ class UserConcertService extends __BaseService {
    *
    * - `userId`:
    */
-  DeleteUserConcertItemResponse(params: UserConcertService.DeleteUserConcertItemParams): __Observable<__StrictHttpResponse<null>> {
+  DeleteUserConcertItemResponse(id: number): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
-    if (params.userId != null) __params = __params.set('userId', params.userId.toString());
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/UserConcert/${params.concertId}`,
+      this.rootUrl + `/api/UserConcert/${id}`,
       __body,
       {
         headers: __headers,
@@ -166,8 +165,8 @@ class UserConcertService extends __BaseService {
    *
    * - `userId`:
    */
-  DeleteUserConcertItem(params: UserConcertService.DeleteUserConcertItemParams): __Observable<null> {
-    return this.DeleteUserConcertItemResponse(params).pipe(
+  DeleteUserConcertItem(id: number): __Observable<null> {
+    return this.DeleteUserConcertItemResponse(id).pipe(
       __map(_r => _r.body as null)
     );
   }

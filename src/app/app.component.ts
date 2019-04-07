@@ -33,6 +33,14 @@ export class AppComponent implements OnInit {
         return this._sideDrawerTransition;
     }
 
+    logout() :void {
+        ApplicationSettings.remove("userId");
+        const sideDrawer = <RadSideDrawer>app.getRootView();
+        sideDrawer.gesturesEnabled = false;
+        sideDrawer.closeDrawer();
+        this.routerExtensions.navigate(["/auth"], { clearHistory: true });
+    }
+
     isComponentSelected(url: string): boolean {
         return this._activatedUrl === url;
     }
