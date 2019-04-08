@@ -1,22 +1,22 @@
 import { NgModule, NO_ERRORS_SCHEMA, Component, NgZone } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 
-import { PlanningRoutingModule } from "./planning-routing.module";
-import { PlanningComponent } from "./planning.component";
+import { RankingRoutingModule } from "./ranking-routing.module";
+import { RankingComponent } from "./ranking.component";
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
-        PlanningRoutingModule
+        RankingRoutingModule
     ],
     declarations: [
-        PlanningComponent
+        RankingComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
 })
 
-export class PlanningModule {
+export class RankingModule {
 
 }

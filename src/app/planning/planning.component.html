@@ -18,8 +18,10 @@
 <GridLayout class="page page-content">
     <StackLayout id="planning-bg">
         <GridLayout columns="*,*" rows="*" height="70" class="menu-head">
-            <Button text="Ton programme" col="0" row="0" class="btn btn-active btn-block btn-header" (tap)="Programm = true" [ngClass]="{'btn-clicked' : Programm}"></Button>
-            <Button text="La Line Up" col="1" row="0" class="btn btn-activebtn-block btn-header" (tap)="Programm = false" [ngClass]="{'btn-clicked' : !Programm}"></Button>
+            <Button text="Ton programme" col="0" row="0" class="btn btn-active btn-block btn-header"
+                (tap)="Programm = true" [ngClass]="{'btn-clicked' : Programm}"></Button>
+            <Button text="La Line Up" col="1" row="0" class="btn btn-activebtn-block btn-header"
+                (tap)="Programm = false" [ngClass]="{'btn-clicked' : !Programm}"></Button>
         </GridLayout>
         <ScrollView *ngIf="Programm" isScrollEnabled="true" style="height: 100%">
             <StackLayout>
@@ -27,36 +29,39 @@
                     <Label class="page-icon fa" text="&#xf091;" style="color: rgb(184, 144, 14);"></Label>
                     <Label class="page-placeholder" text="Tu ne suis aucun concert !"></Label>
                 </StackLayout>
-                <CardView *ngFor="let uc of userConcertsId" class="card" elevation="40" radius="10" ios:shadowRadius="3">
-                        <StackLayout orientation="horizontal" class="card-layout">
-                            <StackLayout>
-                                <Label class="h2" [text]="uc.concert.artist"></Label>
-                                <Label class="body" textWrap="true" text="Le {{ uc.concert.hour | date:'d MMMM y à HH:mm' }}"></Label>
-                                <Label class="body" textWrap="true" [text]="uc.concert.concertLocation.location"></Label>
-                            </StackLayout>
-                            <StackLayout>
-                                <Button class="btn opt-btn fa" text="&#xf1f8;" (tap)="remove(uc.id)"></Button>
-                            </StackLayout>
+                <CardView *ngFor="let uc of userConcertsId" class="card" elevation="40" radius="10"
+                    ios:shadowRadius="3">
+                    <StackLayout orientation="horizontal" class="card-layout">
+                        <StackLayout>
+                            <Label class="h2" [text]="uc.concert.artist"></Label>
+                            <Label class="body" textWrap="true"
+                                text="Le {{ uc.concert.hour | date:'d MMMM y à HH:mm' }}"></Label>
+                            <Label class="body" textWrap="true" [text]="uc.concert.concertLocation.location"></Label>
                         </StackLayout>
-                    </CardView>
+                        <StackLayout>
+                            <Button class="btn opt-btn fa" text="&#xf1f8;" (tap)="remove(uc.id)"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </CardView>
             </StackLayout>
-            
+
         </ScrollView>
         <ScrollView *ngIf="!Programm" isScrollEnabled="true" style="height: 100%">
             <StackLayout>
                 <CardView *ngFor="let concert of concerts" class="card" elevation="40" radius="10" ios:shadowRadius="3">
-                        <StackLayout orientation="horizontal" class="card-layout">
-                                <StackLayout>
-                                    <Label class="h2" [text]="concert.artist"></Label>
-                                    <Label class="body" textWrap="true" text="Le {{ concert.hour | date:'d MMMM y à HH:mm' }}"></Label>
-                                    <Label class="body" textWrap="true" [text]="concert.concertLocation.location"></Label>
-                                </StackLayout>
-                                <StackLayout>
-                                    <Button class="btn opt-btn fa" text="&#xf055;" (tap)="add(concert.id)"></Button>
-                                </StackLayout>
-                            </StackLayout>
-                    </CardView>
+                    <StackLayout orientation="horizontal" class="card-layout">
+                        <StackLayout>
+                            <Label class="h2" [text]="concert.artist"></Label>
+                            <Label class="body" textWrap="true"
+                                text="Le {{ concert.hour | date:'d MMMM y à HH:mm' }}"></Label>
+                            <Label class="body" textWrap="true" [text]="concert.concertLocation.location"></Label>
+                        </StackLayout>
+                        <StackLayout>
+                            <Button class="btn opt-btn fa" text="&#xf055;" (tap)="add(concert.id)"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </CardView>
             </StackLayout>
         </ScrollView>
-     </StackLayout>
+    </StackLayout>
 </GridLayout>

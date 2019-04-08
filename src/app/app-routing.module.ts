@@ -3,10 +3,11 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/auth", pathMatch: "full" },
+    { path: "", redirectTo: "/classement", pathMatch: "full" },
     { path: "home", loadChildren: "~/app/home/home.module#HomeModule" },
     { path: "auth", loadChildren: "~/app/auth/auth.module#AuthModule" },
-    { path: "planning", loadChildren: "~/app/planning/planning.module#PlanningModule" }
+    { path: "planning", loadChildren: "~/app/planning/planning.module#PlanningModule" },
+    { path: "classement", loadChildren: "~/app/ranking/ranking.module#RankingModule" },
 
 ];
 
