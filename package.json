@@ -1,0 +1,64 @@
+{
+  "name": "teampink",
+  "version": "3.0.0",
+  "main": "main.js",
+  "description": "Application mise en place lors d'un cours YNOV sur un projet DELTA FESTIVAL.",
+  "keywords": [
+    "NativeScript"
+  ],
+  "nativescript": {
+    "id": "org.nativescript.checkpointFront",
+    "tns-android": {
+      "version": "5.2.1"
+    },
+    "tns-ios": {
+      "version": "5.2.0"
+    }
+  },
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "repository": "<fill-your-repository-here>",
+  "scripts": {
+    "lint": "tslint \"src/**/*.ts\""
+  },
+  "dependencies": {
+    "@angular/animations": "^7.2.12",
+    "@angular/common": "^7.2.12",
+    "@angular/compiler": "^7.2.12",
+    "@angular/core": "^7.2.12",
+    "@angular/forms": "^7.2.12",
+    "@angular/http": "^7.2.12",
+    "@angular/platform-browser": "^7.2.12",
+    "@angular/platform-browser-dynamic": "^7.2.12",
+    "@angular/router": "^7.2.12",
+    "angular-notifier": "^4.1.1",
+    "argparse": "^1.0.10",
+    "json-schema-ref-parser": "^6.1.0",
+    "mustache": "^3.0.1",
+    "nativescript-angular": "^7.2.3",
+    "nativescript-camera": "^4.4.0",
+    "nativescript-cardview": "^3.1.1",
+    "nativescript-geolocation": "^5.0.0",
+    "nativescript-theme-core": "~1.0.4",
+    "nativescript-ui-sidedrawer": "~5.1.0",
+    "ngx-webcam": "^0.2.2",
+    "reflect-metadata": "~0.1.12",
+    "rxjs": "~6.3.0",
+    "tns-core-modules": "~5.2.0",
+    "zone.js": "~0.8.26"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "^7.2.12",
+    "@nativescript/schematics": "^0.5.2",
+    "@ngtools/webpack": "~7.2.0",
+    "@types/jquery": "^3.3.29",
+    "codelyzer": "~4.5.0",
+    "jquery": "^3.3.1",
+    "nativescript-dev-sass": "~1.6.0",
+    "nativescript-dev-typescript": "~0.8.0",
+    "nativescript-dev-webpack": "^0.20.3",
+    "ng-swagger-gen": "^1.7.0",
+    "tslint": "~5.11.0"
+  },
+  "gitHead": "f548ec926e75201ab1b7c4a3a7ceefe7a4db15af",
+  "readme": "NativeScript Application"
+}

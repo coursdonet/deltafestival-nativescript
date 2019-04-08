@@ -1,0 +1,28 @@
+<FlexboxLayout class="page">   
+        <Image src="~/app/images/deltalogo.png" class="img-rounded p-l-15 p-r-15 p-t-15 logo"></Image>   
+    <StackLayout class="form">
+
+                <StackLayout *ngIf="!isLoggingIn" class="input-field">
+                  <TextField hint="Nom d'utilisateur" class="input" style="color: #C0C0C0" [(ngModel)]="input.userName" returnKeyType="next">
+                  </TextField>
+                  <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+                <StackLayout class="input-field">
+                        <TextField hint="Code du billet" class="input" style="color: #C0C0C0" [(ngModel)]="input.ticketCode" returnKeyType="send" (returnPress)="login()"></TextField>
+                        <StackLayout class="hr-light"></StackLayout>
+                    </StackLayout>  
+                <Button [text]="isLoggingIn ? 'CONNEXION' : 'S\'INSCRIRE'" (tap)="login()" class="btn btn-primary btn-rounded-lg connect-button"></Button>
+
+       </StackLayout>
+
+       <Label (tap)="toggleForm();">
+            <FormattedString>
+              <Span [text]="isLoggingIn ? 'Pas encore enregistré ? ' : 'Retour à connexion'"></Span>
+              <Span [text]="isLoggingIn ? 'Inscription' : ''" class="bold"></Span>
+            </FormattedString>
+          </Label> 
+
+</FlexboxLayout>
+
+
+

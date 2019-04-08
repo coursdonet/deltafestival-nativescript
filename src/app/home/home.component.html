@@ -1,0 +1,37 @@
+<ActionBar class="action-bar">
+    <!-- 
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!-- 
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="Checkpoints"></Label>
+</ActionBar>
+
+<StackLayout class="page page-content" visibility="{{ checkpoints != null ? 'visible' : 'collapse' }}">
+    <ScrollView>
+        <StackLayout>
+            <StackLayout visibility="{{ team && !team.winDate ? 'visible' : 'collapse' }}">
+                <Label class="page-icon-pin fa" text="&#xf276;" style="margin-top:10"></Label>
+                <Button *ngFor="let checkpoint of checkpoints" class="btn btn-active btn-rounded-lg" [ngClass]="{'btn-primary' : checkpoint.isActive, 'btn-discovered' : checkpoint.isDiscovered, 'btn-win' : checkpoint.isTeamChecked}"
+                    text="{{ checkpoint.name }}" isEnabled="{{ checkpoint.isDiscovered }}" (tap)="validateCheckpoint($event)" checkpointId="{{ checkpoint.id }}"></Button>
+            </StackLayout>
+            <StackLayout visibility="{{ team && team.winDate ? 'visible' : 'collapse' }}" style="margin-top : 100">
+                <Label class="page-icon-trophy fa" text="&#xf091;"></Label>
+                <Label class="page-placeholder" text="Gagné !"></Label>
+            </StackLayout>
+            <StackLayout visibility="{{ !team ? 'visible' : 'collapse' }}">
+                <Label class="page-icon-team fa" text="&#xf0c0;"></Label>
+                <Label class="page-placeholder" text="Revenez quand vous aurez une team !"></Label>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</StackLayout>
+
