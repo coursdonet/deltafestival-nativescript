@@ -10,13 +10,22 @@ import { RankingService } from "../api/services";
   moduleId: module.id,
 })
 export class RankingComponent implements OnInit {
-  public ranking: any;
+  public ranking: any[] = [];
 
   constructor(private rankingService: RankingService) { }
 
   ngOnInit() {
     this.rankingService.Ranking().subscribe((ranking) => {
       console.log("ok", ranking);
+      this.ranking = snapshotToArray(ranking);
+      this.ranking.push(snapshotToArray(ranking));
+      this.ranking.push(snapshotToArray(ranking));
+      this.ranking.push(snapshotToArray(ranking));
+      this.ranking.push(snapshotToArray(ranking));
+      this.ranking[1].name = "Test name 2";
+      this.ranking[2].name = "Test name 3";
+      this.ranking[3].name = "Test name 4";
+      this.ranking[4].name = "Test name 5";
     });
   }
 
@@ -28,3 +37,15 @@ export class RankingComponent implements OnInit {
 
 
 }
+
+export const snapshotToArray = snapshot => {
+  let returnArr = [];
+
+  snapshot.forEach(childSnapshot => {
+    console.log(childSnapshot);
+    let item = childSnapshot;
+    returnArr.push(item);
+  });
+
+  return returnArr;
+};
