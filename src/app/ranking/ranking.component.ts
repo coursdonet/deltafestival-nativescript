@@ -22,10 +22,16 @@ export class RankingComponent implements OnInit {
       this.ranking.push(snapshotToArray(ranking));
       this.ranking.push(snapshotToArray(ranking));
       this.ranking.push(snapshotToArray(ranking));
-      this.ranking[1].name = "Test name 2";
-      this.ranking[2].name = "Test name 3";
-      this.ranking[3].name = "Test name 4";
-      this.ranking[4].name = "Test name 5";
+      this.ranking[0].name = "Equipe Name 1";
+      this.ranking[0].point = 158;
+      this.ranking[1].name = "Equipe Name 2";
+      this.ranking[1].point = 148;
+      this.ranking[2].name = "Equipe Name 3";
+      this.ranking[2].point = 111;
+      this.ranking[3].name = "Equipe Name 4";
+      this.ranking[3].point = 98;
+      this.ranking[4].name = "Equipe Name 5";
+      this.ranking[4].point = 35;
     });
   }
 

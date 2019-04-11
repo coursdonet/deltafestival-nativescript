@@ -45,6 +45,10 @@ $sidedrawer-list-icon-size: 20;
             width: $sidedrawer-header-image-size;
             font-size: $sidedrawer-header-image-size;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             margin-bottom: $sidedrawer-header-image-offset-bottom;
             margin-top: $sidedrawer-header-image-offset-top;
         }
@@ -73,6 +77,7 @@ $sidedrawer-list-icon-size: 20;
             padding-left: $sidedrawer-list-item-offset-left;
             Label {
                 vertical-align: center;
+                border-radius: 22px !important;
                 color: $blue-dark;
             }
             .fa {

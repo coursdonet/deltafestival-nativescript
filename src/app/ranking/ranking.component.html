@@ -1,4 +1,4 @@
-<ActionBar class="action-bar">
+<ActionBar class="action-bar" flat="true">
     <!--
     Use the NavigationButton as a side-drawer button in Android
     because ActionItems are shown on the right side of the ActionBar
@@ -17,8 +17,11 @@
 
 <GridLayout class="page page-content">
     <StackLayout class="rankingWrapper">
-        <GridLayout columns="*" rows="*" height="70" class="gridLayoutRanking" *ngFor="let rank of ranking">
-            <Label col="0" row="0" text="{{ rank.name }}" class="label"></Label>
+        <GridLayout columns="50,*,75" rows="*" height="85" class="gridLayoutRanking" *ngFor="let rank of ranking; let i = index;">
+          <Label col="0" row="0" text="#{{ i+1 }}" textWrap="true" class="label"></Label>
+          <Label col="1" row="0" text="{{ rank.name }}" textWrap="true" class="label name"></Label>
+          <Label col="2" row="0" text="{{ rank.point }}" textWrap="true" class="label point"></Label>
         </GridLayout>
     </StackLayout>
 </GridLayout>
+ 

@@ -1,62 +1,96 @@
 .menu-head {
-    border-bottom-style: solid;
-    border-bottom-color: gray;
-    border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: gray;
+  border-bottom-width: 0;
+  box-shadow: none !important;
+}
+
+ActionBar {
+  border-radius: 0 50px 50px 0 !important;
+  height: 90vh !important;
+}
+
+.action-bar {
+  background-color: #ec2F4B;
+  box-shadow: none !important;
+  border-bottom-width: 0 !important;
+  border-radius: 0 50px 50px 0 !important;
+  height: 90vh !important;
 }
 
 .btn-header {
-    width: 100%;
-    height: 100%;
-    background-color: #363636;
-    color: white;
+  width: 100%;
+  height: 100%;
+  background-color: #ec2F4B;
+  color: white;
 }
 
 .btn-header:active {
-    background-color: rgb(66, 64, 64);
+  background-color: #ec2F4B;
 }
 
 .btn-clicked {
-    border-bottom-style: solid;
-    border-bottom-color: rgb(184, 144, 14);
-    border-bottom-width: 10px;
-    border: white 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(184, 144, 14);
+  border-bottom-width: 10px;
+  border: white 1px;
 }
 
 .opt-btn {
-    font-size: 30;
-    margin-left: 85;
+  font-size: 30;
+  margin-left: 85;
 }
 
 .card {
-    background-color: white;
-    opacity: 0.6;
-    color: #4d4d4d;
-    margin: 15 15 0;
+  background-color: white;
+  opacity: 0.6;
+  color: #4d4d4d;
+  margin: 15 15 0;
 }
 
 .card-layout {
-    padding: 20;
+  padding: 20;
 }
 
 .card-layout .h1 {
-    margin-bottom: 15;
+  margin-bottom: 15;
 }
 
 #planning-bg {}
 
 .page-content {
-    background-color: #91D7F8;
+  background: #009FFF;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ec2F4B, #009FFF);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ec2F4B, #009FFF);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  StackLayout.rankingWrapper {
+    width: 100%;
+    height: 100%;
 
-    StackLayout.rankingWrapper {
-        width: 100%;
+    .gridLayoutRanking {
+      width: 100%;
+      height: 100%;
+      margin-top: 15px;
 
-        .gridLayoutRanking {
-            width: 100%;
+      .name {
+        text-align: left;
+      }
 
-            .label {
-                text-align: center;
-                color: black;
-            }
-        }
+      Label {
+        text-align: center;
+        color: white;
+        background-color: rgba(0, 0, 0, .5);
+        margin: 5 2;
+        width: 95%;
+        text-align: center;
+        vertical-align: stretch;
+        font-size: 20;
+        padding: 25 0;
+        // border-radius: ;
+        vertical-align: stretch;
+      }
     }
+  }
 }
