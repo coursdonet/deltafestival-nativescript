@@ -16,13 +16,11 @@
 </ActionBar>
 
 <GridLayout class="page page-content">
-    <StackLayout id="planning-bg">
+    <StackLayout class="rankingWrapper">
 
-        <GridLayout columns="*,*" rows="*" height="70" class="menu-head">
-            <Label text="Classement" col="0" row="0" class="label"></Label>
+        <GridLayout columns="*" rows="*" height="70" class="gridLayoutRanking" *ngFor="let rank of (ranking$ | async)">
+            <Label col="0" row="0" class="label">{{rank.name}}</Label>
 
         </GridLayout>
-
-
     </StackLayout>
 </GridLayout>
